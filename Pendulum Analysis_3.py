@@ -16,7 +16,8 @@ errM = 1e-5 #uncertainty in measurement of mass in Kg
 
 valh = 0.532 #distance from knife edge to centre of mass in m
 valL = 0.395 #length of the uniform cylindrical rod in m
-errL = 1e-3 #uncertainty in measuremnt of length in M
+errh = 2e-3 #uncertainty in measurement of distance h in m
+errL = 1e-3 #uncertainty in measuremnt of length in m
 
 valT_s = t_s/20 #converting the times for multiple oscillations into period
 valT_p = t_p/5
@@ -59,7 +60,7 @@ valgwrth = gwrth.subs({T_s:meanT_s, T_p:meanT_p, T_r:meanT_r,
 valgwrtL = gwrtL.subs({T_s:meanT_s, T_p:meanT_p, T_r:meanT_r,
                            M_p:valM_p, M_r:valM_r, h:valh, L:valL})
 
-sigmas = np.array([SerrT_s, SerrT_p, SerrT_r, errM, errM, errL, errL]) #array containing uncertainties
+sigmas = np.array([SerrT_s, SerrT_p, SerrT_r, errM, errM, errh, errL]) #array containing uncertainties
 partials = np.array([valgwrtT_s, valgwrtT_r, valgwrtT_p, valgwrtM_p, valgwrtM_r, valgwrth, valgwrtL]) #array containing evaluated partial derivatives 
 
 errg = np.sqrt(float(np.sum((sigmas*partials)**2))) #adding product of uncertainty and corresponding partial in quadrature
